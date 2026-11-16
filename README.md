@@ -12,3 +12,7 @@ Abra o site no celular ou computador. Alterne entre modo **Pitch** e **Completo*
 A publicação é acionada automaticamente ao atualizar a branch `main`, pela ação em `.github/workflows/deploy.yml`.
 
 > Atenção: o conteúdo deste repositório é público, inclusive o guia de fala e campos comerciais. Não adicione dados de clientes, credenciais ou informações privadas.
+
+
+## Publicação
+Atualização de implantação: após criar o fluxo de GitHub Actions, esta revisão dispara um novo evento de publicação no branch `main`.

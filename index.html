@@ -24,7 +24,7 @@
  <div class="top-actions">
   <div class="mode-tabs" aria-label="Modo de apresentação"><button data-mode="short" class="active">Pitch</button><button data-mode="all">Completo</button></div>
   <button class="utility" id="notesToggle" title="Ver a fala pronta deste slide">☰ <span class="utext">Guia de fala</span></button>
-  <button class="utility" id="printButton" title="Abrir PDF para baixar ou compartilhar">▤ <span class="utext">PDF</span></button>
+  <button class="utility" id="printButton" title="Imprimir ou salvar a apresentação em PDF">▤ <span class="utext">PDF</span></button>
   <button class="utility accent" id="fullButton" title="Apresentar em tela cheia">⛶ <span class="utext">Tela cheia</span></button>
  </div>
 </header>
@@ -274,7 +274,7 @@
  document.querySelectorAll('[data-obj]').forEach(b=>b.addEventListener('click',()=>{obj=Number(b.dataset.obj);updateObjection()}));
  $('prevButton').addEventListener('click',()=>step(-1));$('nextButton').addEventListener('click',()=>{if(current===activeSequence().at(-1))go(activeSequence()[0]);else step(1)});
  $('notesToggle').addEventListener('click',()=>{$('notesDrawer').classList.toggle('open')});$('notesClose').addEventListener('click',()=>$('notesDrawer').classList.remove('open'));
- $('printButton').addEventListener('click',()=>{window.open('./Kadelta_Apresentacao_Prospecao_Celular.pdf','_blank','noopener');});
+ $('printButton').addEventListener('click',()=>{window.print();});
  $('fullButton').addEventListener('click',()=>{if(!document.fullscreenElement){document.documentElement.requestFullscreen?.().catch(()=>toast('Tela cheia não disponível neste navegador.'))}else document.exitFullscreen?.()});
  $('copyLead').addEventListener('click',()=>copyText(leadSummary()));$('copyInvite').addEventListener('click',()=>copyText(invite()));$('copyAll').addEventListener('click',()=>copyText(fullScript()));
  document.addEventListener('keydown',(event)=>{const tag=(document.activeElement.tagName||'').toLowerCase();if(['input','textarea'].includes(tag)||event.altKey||event.ctrlKey||event.metaKey)return;if(event.key==='ArrowRight'||event.key==='PageDown'){event.preventDefault();step(1)}if(event.key==='ArrowLeft'||event.key==='PageUp'){event.preventDefault();step(-1)}if(event.key==='Escape')$('notesDrawer').classList.remove('open');if(event.key==='g'||event.key==='G')$('notesDrawer').classList.toggle('open')});

@@ -3,18 +3,17 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
 concurrency:
   group: pages
   cancel-in-progress: true
+
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
+    name: Preparar site
     runs-on: ubuntu-latest
     steps:
       - name: Baixar arquivos
@@ -23,10 +22,22 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Empacotar site
+      - name: Criar pacote do site
         uses: actions/upload-pages-artifact@v4
         with:
           path: .
-      - name: Publicar site
+
+  deploy:
+    name: Publicar no GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar
         id: deployment
         uses: actions/deploy-pages@v4

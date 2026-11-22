@@ -12,6 +12,7 @@ Os arquivos `index.html`, `styles.css`, `app.js` e `favicon.svg` ficam na raiz d
 - 10 setores com exemplos genéricos por operação.
 - 9 sintomas multi-seleção; perguntas condicionais de acordo com o sintoma principal.
 - Recomendações **hipotéticas** entre agente de IA, dashboard, integração, automação, sistema e MVP. É possível selecionar múltiplas soluções.
+- Visualização de **antes e depois** dinâmica conforme sintoma prioritário e combinação de soluções, explicitamente identificada como ilustração.
 - Cenário de mais 30 dias baseado exclusivamente em valores informados na conversa. Há caminho sem números.
 - Referências de 2026 verificáveis e com avisos de limite.
 - Guia de fala para representantes.

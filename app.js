@@ -3,13 +3,12 @@
 const STEPS=['Começo','Setor','Sintomas','Entender a dor','Mais 30 dias','Caminhos','Evidências','Método Δ','Próximo passo'];
 const SECTORS=[
 {id:'restaurant',icon:'◫',name:'Restaurantes e delivery',hint:'Pedidos, atendimento, cozinha, salão, entregas e repasses de informação.',example:'Um pedido chega pelo WhatsApp, é redigitado na cozinha e depois repassado à entrega.'},
-{id:'solar',icon:'☀',name:'Energia solar',hint:'Entrada de leads, propostas, venda, projetos, implantação e pós-venda.',example:'O lead chega por campanha, passa pelo CRM e parte do acompanhamento ainda depende de planilha.'},
 {id:'retail',icon:'▥',name:'Comércio e varejo',hint:'Vendas, atendimento, estoque, pedidos, devoluções e canais de contato.',example:'O cliente pergunta se há estoque e ninguém tem uma resposta confiável em tempo real.'},
 {id:'services',icon:'✦',name:'Serviços',hint:'Agenda, propostas, tarefas, execução, contratos e relacionamento.',example:'A equipe agenda, executa e fatura em ferramentas diferentes, com conferências manuais.'},
 {id:'industry',icon:'⚙',name:'Indústria',hint:'Processos produtivos, apontamentos, ordens, manutenção e informações.',example:'O responsável só descobre o atraso de produção depois que alguém consolida relatórios.'},
 {id:'health',icon:'✚',name:'Saúde e clínicas',hint:'Agendamentos, recepção, comunicação e gestão operacional, com privacidade reforçada.',example:'A recepção responde perguntas repetidas e confirma agendas manualmente, com cuidado especial aos dados.'},
 {id:'logistics',icon:'⇄',name:'Logística e entregas',hint:'Pedidos, roteiros, status de entregas, ocorrências e comunicação.',example:'O cliente liga perguntando sobre a entrega porque o status não chega à equipe de atendimento.'},
-{id:'construction',icon:'⌂',name:'Construção e obras',hint:'Etapas, cronogramas, equipes, materiais e acompanhamento das obras.',example:'As atualizações de uma obra ficam espalhadas entre mensagens, fotos e planilhas.'},
+{id:'construction',icon:'⌂',name:'Engenharia e obras',hint:'Projetos, etapas, cronogramas, equipes, materiais e acompanhamento das obras.',example:'As atualizações de uma obra ficam espalhadas entre mensagens, fotos e planilhas.'},
 {id:'technology',icon:'⌘',name:'Tecnologia e SaaS',hint:'Produto, clientes, integrações, suporte e evolução de software.',example:'Os clientes pedem uma funcionalidade importante, mas a equipe precisa validar escopo e prioridade.'},
 {id:'other',icon:'◇',name:'Outro setor',hint:'O diagnóstico parte do processo real e das metas da empresa, qualquer que seja o segmento.',example:'Uma etapa importante depende de alguém juntar informações manualmente.'}
 ];

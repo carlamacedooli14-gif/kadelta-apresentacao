@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f2ea">
+  <meta name="description" content="Protótipo do painel Kadelta para gestão de diagnósticos, leads, oportunidades e representantes. Ambiente demonstrativo sem banco de dados.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=1">
+  <title>Kadelta | Gestão de diagnósticos · Protótipo</title>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="./"><span class="brand-word">kadelta<span class="brand-delta">Δ</span></span><small>MUDANÇA QUE SE MEDE.</small></a>
+    <div class="workspace-tag"><span class="spark"></span> CENTRAL COMERCIAL <b>DEMO</b></div>
+    <div class="sidebar-caption">ESPAÇO DE TRABALHO</div>
+    <nav aria-label="Seções da gestão" class="sidebar-nav" id="sideNav">
+      <button type="button" class="navitem active" data-view="dashboard"><span class="nav-icon" data-icon="layout"></span> Visão geral</button>
+      <button type="button" class="navitem" data-view="leads"><span class="nav-icon" data-icon="users"></span> Carteira de leads <span class="nav-count" id="navLeadCount">0</span></button>
+      <button type="button" class="navitem" data-view="diagnostics"><span class="nav-icon" data-icon="clipboard"></span> Diagnósticos</button>
+      <button type="button" class="navitem" data-view="pipeline"><span class="nav-icon" data-icon="columns"></span> Negociações</button>
+      <button type="button" class="navitem" data-view="agenda"><span class="nav-icon" data-icon="calendar"></span> Agenda e retornos</button>
+      <button type="button" class="navitem" data-view="network"><span class="nav-icon" data-icon="network"></span> Representantes</button>
+    </nav>
+    <div class="sidebar-caption sidebar-caption-extra">EXPERIÊNCIA COMERCIAL</div>
+    <a class="navitem navlink" href="../?demo=1"><span class="nav-icon" data-icon="presentation"></span> Abrir apresentação <span class="sub-arrow">↗</span></a>
+    <div class="sidebar-bottom">
+      <div class="side-note"><span class="side-note-icon">◎</span><div><strong>Um sistema, várias oportunidades.</strong><p>Da primeira conversa à decisão comercial.</p></div></div>
+      <div class="sidebar-legal">PROTÓTIPO SEM BACKEND<br>Somente dados fictícios para testes.</div>
+    </div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <div class="topbar-start"><button type="button" class="icon-button mobile-menu" id="menuButton" aria-label="Abrir menu">☰</button><div><div class="breadcrumb">KADELTA <span>/</span> CENTRAL COMERCIAL <span>/</span> <b id="breadcrumbView">Visão geral</b></div><div class="topbar-subtitle">Diagnósticos, oportunidades e relacionamentos em um só lugar.</div></div></div>
+      <div class="topbar-actions"><span class="demo-flag"><span class="dot"></span> SIMULAÇÃO</span><label class="role-label" for="roleSelect">Visualizar como</label><select id="roleSelect" class="role-select" aria-label="Perfil de demonstração"><option value="manager">Gestão Kadelta</option><option value="rep-01">Representante Ana</option><option value="rep-02">Representante Lucas</option><option value="rep-03">Representante Marina</option></select><button type="button" class="primary-btn top-new" id="newLeadTop"><span>＋</span> Novo lead</button></div>
+    </header>
+
+    <div class="notice-bar" id="noticeBar"><span>◈</span><div><strong>Ambiente de demonstração</strong> — os registros são exemplos fictícios e as alterações ficam apenas neste navegador. Não insira dados pessoais reais.</div><button type="button" id="dismissNotice" aria-label="Dispensar aviso">×</button></div>
+    <main id="view" class="view-root" tabindex="-1"></main>
+    <footer class="page-footer"><span>KADELTA Δ · CENTRAL COMERCIAL DEMONSTRATIVA</span><span>O problema primeiro. A ferramenta depois. O resultado sempre.</span></footer>
+  </div>
+</div>
+<div class="mobile-scrim" id="mobileScrim" hidden></div>
+<div class="overlay" id="drawerOverlay" hidden></div>
+<aside class="drawer" id="detailDrawer" aria-label="Detalhes da oportunidade" aria-hidden="true">
+  <div class="drawer-head"><div><span class="micro-label">FICHA DA OPORTUNIDADE</span><h2 id="drawerTitle">Detalhes</h2><p id="drawerSubtitle"></p></div><button class="icon-button" type="button" id="drawerClose" aria-label="Fechar oportunidade">✕</button></div>
+  <nav id="drawerTabs" class="drawer-tabs" aria-label="Abas da oportunidade"><button class="selected" data-tab="overview">Visão geral</button><button data-tab="diagnosis">Diagnóstico</button><button data-tab="negotiation">Negociação</button><button data-tab="history">Histórico</button></nav>
+  <div id="drawerBody" class="drawer-body"></div>
+  <div class="drawer-foot"><button type="button" class="secondary-btn" id="drawerPrint">Imprimir ficha</button><button type="button" class="primary-btn" id="drawerNextAction">＋ Registrar atividade</button></div>
+</aside>
+<dialog class="modal" id="newLeadDialog" aria-label="Cadastrar nova oportunidade">
+  <div class="modal-heading"><div><span class="micro-label">CADASTRO COMERCIAL</span><h2>Nova oportunidade</h2><p>Primeiro registramos a empresa e o problema. A solução será validada depois.</p></div><button class="icon-button" type="button" data-close-dialog="newLeadDialog" aria-label="Fechar">✕</button></div>
+  <form id="newLeadForm" class="form-stack">
+    <div class="form-row"><label>Nome da empresa <span>*</span><input name="company" required minlength="2" maxlength="100" placeholder="Ex.: Empresa Modelo" autocomplete="off"></label><label>Setor <span>*</span><select name="sector" required id="newSector"></select></label></div>
+    <div class="form-row"><label>Contato fictício <span>*</span><input name="contact" required minlength="2" maxlength="100" placeholder="Ex.: Pessoa Responsável"></label><label>Representante <span>*</span><select name="rep" required id="newRep"></select></label></div>
+    <label>Qual sintoma foi identificado? <span>*</span><select name="priority" required id="newPriority"></select></label>
+    <label>Descreva a situação em palavras simples <span>*</span><textarea name="description" rows="3" required minlength="8" maxlength="1500" placeholder="O que está acontecendo? Quando acontece? Qual impacto o cliente percebe?"></textarea></label>
+    <label>Soluções a investigar <small>(opcional; pode marcar várias)</small></label><div class="checks-row" id="newSolutions"></div>
+    <div class="form-row"><label>Etapa inicial<select name="stage" id="newStage"></select></label><label>Próximo contato <input type="date" name="nextDate"></label></div>
+    <div class="form-note">Este cadastro é apenas para testes de interface. Ele será salvo no armazenamento local deste navegador, sem login nem compartilhamento com a equipe.</div>
+    <div class="modal-actions"><button type="button" class="secondary-btn" data-close-dialog="newLeadDialog">Cancelar</button><button class="primary-btn" type="submit">Cadastrar oportunidade ↗</button></div>
+  </form>
+</dialog>
+<dialog class="modal import-modal" id="importDialog" aria-label="Importar pré-diagnóstico">
+  <div class="modal-heading"><div><span class="micro-label">APRESENTAÇÃO → GESTÃO</span><h2>Importar pré-diagnóstico</h2><p>Cole o resumo gerado na apresentação ou importe o arquivo .txt, somente com informações fictícias.</p></div><button class="icon-button" type="button" data-close-dialog="importDialog">✕</button></div>
+  <label class="upload-label" for="importFile">Selecionar arquivo .txt da apresentação<input id="importFile" type="file" accept=".txt,text/plain"></label>
+  <textarea id="importText" class="import-text" rows="12" placeholder="KADELTA | MAPA DE OPORTUNIDADE&#10;Setor: ...&#10;Sintomas identificados: ..."></textarea>
+  <div class="form-note">Importação demonstrativa: o texto é convertido em oportunidade e fica somente neste navegador. Não cole dados reais de clientes.</div>
+  <div class="modal-actions"><button class="secondary-btn" type="button" data-close-dialog="importDialog">Cancelar</button><button class="primary-btn" type="button" id="doImport">Importar para a carteira ↗</button></div>
+</dialog>
+<dialog class="modal activity-modal" id="activityDialog" aria-label="Registrar atividade">
+  <div class="modal-heading"><div><span class="micro-label">ACOMPANHAMENTO</span><h2>Registrar atividade</h2><p>Um histórico completo evita que a oportunidade se perca após a apresentação.</p></div><button class="icon-button" type="button" data-close-dialog="activityDialog">✕</button></div>
+  <form id="activityForm" class="form-stack"><input type="hidden" name="oppId" id="activityOppId"><label>Tipo<select name="type"><option value="note">Nota comercial</option><option value="call">Ligação</option><option value="meeting">Reunião</option><option value="whatsapp">Contato por WhatsApp</option><option value="task">Próxima tarefa</option></select></label><label>O que aconteceu ou precisa acontecer? <span>*</span><textarea name="description" required rows="4" minlength="4" maxlength="1200" placeholder="Ex.: Agendar conversa com o responsável operacional."></textarea></label><label>Data do próximo retorno (opcional)<input type="date" name="nextDate"></label><div class="modal-actions"><button type="button" class="secondary-btn" data-close-dialog="activityDialog">Cancelar</button><button class="primary-btn" type="submit">Salvar no histórico ↗</button></div></form>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="./app.js?v=1" defer></script>
+</body>
+</html>

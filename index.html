@@ -191,6 +191,11 @@
               <button type="button" class="btn-outline" id="saveSummary">Salvar resumo .txt</button>
               <button type="button" class="btn-outline" id="printSummary">Salvar como PDF</button>
             </div>
+            <div id="demoHandoff" hidden style="border:1px solid #f0c8a8;background:#fff1e4;padding:17px;border-radius:12px;margin-top:17px;">
+              <strong style="display:block;font-size:13px;margin-bottom:7px;color:#a24c23;">Simular o cadastro na gestão</strong>
+              <p style="font-size:11px;line-height:1.5;color:#805436;margin-bottom:12px;">Somente no modo de teste: envie o exemplo fictício para o painel de diagnósticos e acompanhe como a equipe Kadelta receberia esta oportunidade. Não digite dados reais.</p>
+              <button type="button" class="btn-primary" id="sendDemoCRM" style="width:100%;">Enviar exemplo para o painel ↗</button>
+            </div>
             <p class="privacy-note">Este protótipo <strong>não envia nem salva dados em um CRM</strong>. Tudo permanece apenas nesta sessão do navegador. Compartilhe informações pessoais somente com autorização.</p>
           </div>
         </div>
@@ -226,6 +231,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="./app.js?v=20261122-2" defer></script>
+  <script src="./app.js?v=20261122-gestao1" defer></script>
 </body>
 </html>

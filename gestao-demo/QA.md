@@ -8,7 +8,7 @@ Testes do painel estático, executados com Chromium + Playwright via injeção d
 - [x] Sem rolagem horizontal na página principal nas quatro larguras.
 - [x] Navegação por menu lateral e menu mobile.
 - [x] Carteira: 10 oportunidades fictícias, pesquisa por nome, empresa com duas oportunidades.
-- [x] Ficha: abrir, consultar diagnóstico, navegar por abas e fechar.
+- [x] Ficha: abrir, consultar diagnóstico, navegar por abas e fechar; exibir oportunidades relacionadas da mesma empresa.
 - [x] Funil: 7 etapas renderizadas.
 - [x] Cadastro demonstrativo manual gera nova oportunidade.
 - [x] Atualização do diagnóstico preenche 6 de 6 campos de referência.
